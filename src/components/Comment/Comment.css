@@ -1,0 +1,78 @@
+.comment {
+	display: flex;
+	gap: 15px;
+	margin-bottom: 10px;
+	padding: 20px;
+	background-color: var(--white);
+	border-radius: 10px;
+	font-size: small;
+}
+
+.like--container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 5px;
+	padding: 10px;
+	height: fit-content;
+	background-color: var(--light-gray);
+	border-radius: 5px;
+}
+
+.like--button > svg > path {
+	fill: var(--light-grayish-blue);
+}
+
+.like--button > svg > path:hover {
+	fill: var(--moderate-blue);
+}
+
+.like--count {
+	color: var(--moderate-blue);
+	font-weight: 500;
+}
+
+.comment--main {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.comment--main--meta-data {
+	display: flex;
+	justify-content: space-between;
+}
+
+.meta-data-left {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.user-name {
+	font-weight: 500;
+	color: var(--dark-blue);
+}
+
+.elapsed-time {
+	font-weight: 200;
+	color: var(--grayish-blue);
+}
+
+.user-avatar {
+	width: 25px;
+	height: 25px;
+}
+
+.reply {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	color: var(--moderate-blue);
+}
+
+.comment--content {
+	font-weight: 200;
+	line-height: 1rem;
+	color: var(--grayish-blue);
+}

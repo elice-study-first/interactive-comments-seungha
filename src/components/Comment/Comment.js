@@ -1,12 +1,13 @@
 import Component from '../../core/Component';
 import { html } from '../../helper';
+import './Comment.css';
 
 export default class Comment extends Component {
 	template() {
 		return html`
 			<article class="comment">
 				<section class="like--container">
-					<button class="like--plus">
+					<button class="like--plus like--button">
 						<svg
 							width="11"
 							height="11"
@@ -19,7 +20,7 @@ export default class Comment extends Component {
 						</svg>
 					</button>
 					<p class="like--count">${this.props.score}</p>
-					<button class="like--minus">
+					<button class="like--minus like--button">
 						<svg
 							width="11"
 							height="3"
@@ -36,6 +37,7 @@ export default class Comment extends Component {
 					<section class="comment--main--meta-data">
 						<div class="meta-data-left">
 							<img
+								class="user-avatar"
 								src=${this.props.user.image.png}
 								alt="user avatar"
 							/>
@@ -56,7 +58,7 @@ export default class Comment extends Component {
 							Reply
 						</button>
 					</section>
-					<p>${this.props.content}</p>
+					<p class="comment--content">${this.props.content}</p>
 				</section>
 			</article>
 		`;
