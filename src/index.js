@@ -1,3 +1,3 @@
-import Comments from './components/Comments';
+import App from './components/App/App';
 
-new Comments(document.querySelector('body'));
+new App(document.querySelector('#root'));
