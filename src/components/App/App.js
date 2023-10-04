@@ -38,6 +38,7 @@ export default class App extends Component {
 			currentUser: this.state.currentUser,
 			addComment: this.addComment.bind(this),
 		});
+		this.showModal();
 	}
 
 	addComment(newComment) {
@@ -63,11 +64,16 @@ export default class App extends Component {
 			deleteComment: this.deleteComment.bind(this),
 			commentId: id,
 		});
+
+		this.bodyOverflow = document.body.style.overflow;
+		document.body.style.overflow = 'hidden';
 	}
 
 	closeModal() {
 		const $deleteModalWrapper = document.querySelector('.delete-modal-wrapper');
 		$deleteModalWrapper.innerHTML = '';
+
+		document.body.style.overflow = this.bodyOverflow;
 	}
 
 	deleteComment(id) {
