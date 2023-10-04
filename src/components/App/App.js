@@ -27,7 +27,7 @@ export default class App extends Component {
 		const $commentsWrapper = document.querySelector('.comments-wrapper');
 		const $commentsFormWrapper = document.querySelector('.comments-form-wrapper');
 
-		new Comments($commentsWrapper, { comments: this.state.comments });
+		new Comments($commentsWrapper, { comments: this.state.comments, username: this.state.currentUser.username });
 		new CommentForm($commentsFormWrapper, {
 			currentUser: this.state.currentUser,
 			addComment: this.addComment.bind(this),

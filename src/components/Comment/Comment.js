@@ -4,6 +4,8 @@ import './Comment.css';
 
 export default class Comment extends Component {
 	template() {
+		const { comment, isCurrentUser } = this.props;
+
 		return html`
 			<article class="comment">
 				<section class="like--container">
@@ -19,7 +21,7 @@ export default class Comment extends Component {
 							/>
 						</svg>
 					</button>
-					<p class="like--count">${this.props.score}</p>
+					<p class="like--count">${comment.score}</p>
 					<button class="like--minus like--button">
 						<svg
 							width="11"
@@ -38,11 +40,11 @@ export default class Comment extends Component {
 						<div class="meta-data-left">
 							<img
 								class="user-avatar"
-								src=${this.props.user.image.png}
+								src=${comment.user.image.png}
 								alt="user avatar"
 							/>
-							<p class="user-name">${this.props.user.username}</p>
-							<p class="elapsed-time">${this.props.createdAt}</p>
+							<p class="user-name">${comment.user.username}</p>
+							<p class="elapsed-time">${comment.createdAt}</p>
 						</div>
 						<button class="reply">
 							<svg
@@ -58,7 +60,7 @@ export default class Comment extends Component {
 							Reply
 						</button>
 					</section>
-					<p class="comment--content">${this.props.content}</p>
+					<p class="comment--content">${comment.content}</p>
 				</section>
 			</article>
 		`;
