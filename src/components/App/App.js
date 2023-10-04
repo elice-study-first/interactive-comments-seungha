@@ -38,7 +38,6 @@ export default class App extends Component {
 			currentUser: this.state.currentUser,
 			addComment: this.addComment.bind(this),
 		});
-		this.showModal();
 	}
 
 	addComment(newComment) {
