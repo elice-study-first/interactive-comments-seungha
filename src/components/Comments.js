@@ -1,7 +1,7 @@
 import Component from '../core/Component';
 import data from '../../data.json';
 import { html } from '../helper';
-import Comment from './Comment';
+import Comment from './Comment/Comment';
 
 export default class Comments extends Component {
 	setup() {

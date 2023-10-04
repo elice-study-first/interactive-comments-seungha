@@ -1,5 +1,5 @@
-import Component from '../core/Component';
-import { html } from '../helper';
+import Component from '../../core/Component';
+import { html } from '../../helper';
 
 export default class Comment extends Component {
 	template() {
