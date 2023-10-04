@@ -13,7 +13,11 @@ export default class Comments extends Component {
 		const $comments = this.props.comments.map((comment) => {
 			const $li = document.createElement('li');
 
-			new Comment($li, { comment, isCurrentUser: comment.user.username === this.props.username });
+			new Comment($li, {
+				comment,
+				isCurrentUser: comment.user.username === this.props.username,
+				showModal: this.props.showModal,
+			});
 
 			return $li;
 		});

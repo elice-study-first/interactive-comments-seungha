@@ -28,14 +28,16 @@ export default class App extends Component {
 	mounted() {
 		const $commentsWrapper = document.querySelector('.comments-wrapper');
 		const $commentsFormWrapper = document.querySelector('.comments-form-wrapper');
-		const $deleteModalWrapper = document.querySelector('.delete-modal-wrapper');
 
-		new Comments($commentsWrapper, { comments: this.state.comments, username: this.state.currentUser.username });
+		new Comments($commentsWrapper, {
+			comments: this.state.comments,
+			username: this.state.currentUser.username,
+			showModal: this.showModal.bind(this),
+		});
 		new CommentForm($commentsFormWrapper, {
 			currentUser: this.state.currentUser,
 			addComment: this.addComment.bind(this),
 		});
-		new DeleteModal($deleteModalWrapper);
 	}
 
 	addComment(newComment) {
@@ -52,5 +54,10 @@ export default class App extends Component {
 				},
 			],
 		});
+	}
+
+	showModal() {
+		const $deleteModalWrapper = document.querySelector('.delete-modal-wrapper');
+		new DeleteModal($deleteModalWrapper);
 	}
 }

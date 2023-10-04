@@ -97,4 +97,10 @@ export default class Comment extends Component {
 			</article>
 		`;
 	}
+
+	setEvent() {
+		this.addEvent('click', '.delete', () => {
+			this.props.showModal();
+		});
+	}
 }
