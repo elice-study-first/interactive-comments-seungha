@@ -3,6 +3,7 @@ import Comments from '../Comments';
 import { html } from '../../helper';
 import data from '../../../data.json';
 import CommentForm from '../CommentForm/CommentForm';
+import './App.css';
 
 export default class App extends Component {
 	setup() {
