@@ -4,7 +4,7 @@ export default class Component {
 	state;
 	constructor($target, props) {
 		this.$target = $target;
-		this.props = props; // props 할당
+		this.props = props;
 		this.setup();
 		this.setEvent();
 		this.render();
@@ -16,9 +16,10 @@ export default class Component {
 	}
 	render() {
 		this.$target.innerHTML = this.template();
-		this.mounted(); // render 후에 mounted가 실행 된다.
+		this.mounted();
 	}
 	setEvent() {}
+
 	setState(newState) {
 		this.state = { ...this.state, newState };
 		this.render();
