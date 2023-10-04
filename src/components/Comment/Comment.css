@@ -73,10 +73,23 @@
 	height: 25px;
 }
 
-.reply {
+.comment-button-container {
+	display: flex;
+	gap: 15px;
+}
+
+.comment-button {
 	display: flex;
 	align-items: center;
 	gap: 5px;
+}
+
+.delete {
+	color: var(--soft-red);
+}
+
+.reply,
+.edit {
 	color: var(--moderate-blue);
 }
 
