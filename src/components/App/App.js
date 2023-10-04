@@ -56,13 +56,23 @@ export default class App extends Component {
 		});
 	}
 
-	showModal() {
+	showModal(id) {
 		const $deleteModalWrapper = document.querySelector('.delete-modal-wrapper');
-		new DeleteModal($deleteModalWrapper, { closeModal: this.closeModal.bind(this) });
+		new DeleteModal($deleteModalWrapper, {
+			closeModal: this.closeModal.bind(this),
+			deleteComment: this.deleteComment.bind(this),
+			commentId: id,
+		});
 	}
 
 	closeModal() {
 		const $deleteModalWrapper = document.querySelector('.delete-modal-wrapper');
 		$deleteModalWrapper.innerHTML = '';
+	}
+
+	deleteComment(id) {
+		const filteredComments = this.state.comments.filter((comment) => comment.id !== id);
+		this.setState({ comments: filteredComments });
+		this.closeModal();
 	}
 }

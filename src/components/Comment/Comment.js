@@ -100,7 +100,7 @@ export default class Comment extends Component {
 
 	setEvent() {
 		this.addEvent('click', '.delete', () => {
-			this.props.showModal();
+			this.props.showModal(this.props.comment.id);
 		});
 	}
 }
