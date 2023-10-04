@@ -58,6 +58,11 @@ export default class App extends Component {
 
 	showModal() {
 		const $deleteModalWrapper = document.querySelector('.delete-modal-wrapper');
-		new DeleteModal($deleteModalWrapper);
+		new DeleteModal($deleteModalWrapper, { closeModal: this.closeModal.bind(this) });
+	}
+
+	closeModal() {
+		const $deleteModalWrapper = document.querySelector('.delete-modal-wrapper');
+		$deleteModalWrapper.innerHTML = '';
 	}
 }

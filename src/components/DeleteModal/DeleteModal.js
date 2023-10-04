@@ -17,4 +17,10 @@ export default class DeleteModal extends Component {
 			</div>
 		`;
 	}
+
+	setEvent() {
+		this.addEvent('click', '.no', () => {
+			this.props.closeModal();
+		});
+	}
 }
