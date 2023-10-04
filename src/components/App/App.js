@@ -4,13 +4,14 @@ import { html } from '../../helper';
 import data from '../../../data.json';
 import CommentForm from '../CommentForm/CommentForm';
 import './App.css';
+import DeleteModal from '../DeleteModal/DeleteModal';
 
 export default class App extends Component {
 	setup() {
 		this.state = {
 			currentUser: data.currentUser,
 			comments: data.comments,
-			id: 5,
+			id: 6,
 		};
 	}
 
@@ -19,6 +20,7 @@ export default class App extends Component {
 			<div class="app">
 				<div class="comments-wrapper"></div>
 				<div class="comments-form-wrapper"></div>
+				<div class="delete-modal-wrapper"></div>
 			</div>
 		`;
 	}
@@ -27,7 +29,11 @@ export default class App extends Component {
 		const $commentsWrapper = document.querySelector('.comments-wrapper');
 		const $commentsFormWrapper = document.querySelector('.comments-form-wrapper');
 
-		new Comments($commentsWrapper, { comments: this.state.comments });
+		new Comments($commentsWrapper, {
+			comments: this.state.comments,
+			username: this.state.currentUser.username,
+			showModal: this.showModal.bind(this),
+		});
 		new CommentForm($commentsFormWrapper, {
 			currentUser: this.state.currentUser,
 			addComment: this.addComment.bind(this),
@@ -48,5 +54,30 @@ export default class App extends Component {
 				},
 			],
 		});
+	}
+
+	showModal(id) {
+		const $deleteModalWrapper = document.querySelector('.delete-modal-wrapper');
+		new DeleteModal($deleteModalWrapper, {
+			closeModal: this.closeModal.bind(this),
+			deleteComment: this.deleteComment.bind(this),
+			commentId: id,
+		});
+
+		this.bodyOverflow = document.body.style.overflow;
+		document.body.style.overflow = 'hidden';
+	}
+
+	closeModal() {
+		const $deleteModalWrapper = document.querySelector('.delete-modal-wrapper');
+		$deleteModalWrapper.innerHTML = '';
+
+		document.body.style.overflow = this.bodyOverflow;
+	}
+
+	deleteComment(id) {
+		const filteredComments = this.state.comments.filter((comment) => comment.id !== id);
+		this.setState({ comments: filteredComments });
+		this.closeModal();
 	}
 }
