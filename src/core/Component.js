@@ -20,9 +20,14 @@ export default class Component {
 	}
 	setEvent() {}
 	setState(newState) {
-		/* 생략 */
+		this.state = { ...this.state, newState };
+		this.render();
 	}
+
 	addEvent(eventType, selector, callback) {
-		/* 생략 */
+		this.$target.addEventListener(eventType, (event) => {
+			if (!event.target.closest(selector)) return false;
+			callback(event);
+		});
 	}
 }
