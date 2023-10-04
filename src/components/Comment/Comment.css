@@ -55,6 +55,14 @@
 	color: var(--dark-blue);
 }
 
+.current-user-badge {
+	padding: 3px 5px;
+	font-size: x-small;
+	border-radius: 3px;
+	background-color: var(--moderate-blue);
+	color: var(--white);
+}
+
 .elapsed-time {
 	font-weight: 200;
 	color: var(--grayish-blue);

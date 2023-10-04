@@ -44,6 +44,7 @@ export default class Comment extends Component {
 								alt="user avatar"
 							/>
 							<p class="user-name">${comment.user.username}</p>
+							${isCurrentUser ? `<div class="current-user-badge">you</div>` : ''}
 							<p class="elapsed-time">${comment.createdAt}</p>
 						</div>
 						<button class="reply">
