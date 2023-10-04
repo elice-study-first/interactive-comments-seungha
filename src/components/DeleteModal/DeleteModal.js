@@ -28,5 +28,12 @@ export default class DeleteModal extends Component {
 		this.addEvent('click', '.yes', () => {
 			this.props.deleteComment(this.props.commentId);
 		});
+
+		this.addEvent('click', '.delete-modal--container', (event) => {
+			const $deleteModal = this.$target.querySelector('.delete-modal');
+
+			if ($deleteModal?.contains(event.target)) return;
+			this.props.closeModal();
+		});
 	}
 }
