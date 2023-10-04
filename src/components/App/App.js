@@ -11,7 +11,7 @@ export default class App extends Component {
 		this.state = {
 			currentUser: data.currentUser,
 			comments: data.comments,
-			id: 5,
+			id: 6,
 		};
 	}
 
