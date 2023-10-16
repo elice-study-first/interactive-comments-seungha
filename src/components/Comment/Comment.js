@@ -4,7 +4,7 @@ import './Comment.css';
 
 export default class Comment extends Component {
 	template() {
-		const { comment, isCurrentUser } = this.props;
+		const { comment, isCurrentUser, isEditing } = this.props;
 
 		return html`
 			<article class="comment">
@@ -92,15 +92,26 @@ export default class Comment extends Component {
 						Reply
 					</button>`}
 					</section>
-					<p class="comment--content">${comment.content}</p>
+					${isEditing
+						? `<textarea>${comment.content}</textarea><button
+						class="update"
+						type="submit"
+					>
+						UPDATE
+					</button>`
+						: `	<p class="comment--content">${comment.content}</p>`}
 				</section>
 			</article>
 		`;
 	}
-
+	x;
 	setEvent() {
 		this.addEvent('click', '.delete', () => {
 			this.props.showModal(this.props.comment.id);
+		});
+
+		this.addEvent('click', '.edit', () => {
+			this.props.startEditing(this.props.comment.id);
 		});
 	}
 }

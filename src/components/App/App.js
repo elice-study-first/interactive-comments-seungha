@@ -12,6 +12,7 @@ export default class App extends Component {
 			currentUser: data.currentUser,
 			comments: data.comments,
 			id: 6,
+			currentEditingCommentId: null,
 		};
 	}
 
@@ -33,6 +34,8 @@ export default class App extends Component {
 			comments: this.state.comments,
 			username: this.state.currentUser.username,
 			showModal: this.showModal.bind(this),
+			currentEditingCommentId: this.state.currentEditingCommentId,
+			startEditing: this.startEditing.bind(this),
 		});
 		new CommentForm($commentsFormWrapper, {
 			currentUser: this.state.currentUser,
@@ -79,5 +82,9 @@ export default class App extends Component {
 		const filteredComments = this.state.comments.filter((comment) => comment.id !== id);
 		this.setState({ comments: filteredComments });
 		this.closeModal();
+	}
+
+	startEditing(id) {
+		this.setState({ currentEditingCommentId: id });
 	}
 }
