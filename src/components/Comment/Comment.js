@@ -93,12 +93,14 @@ export default class Comment extends Component {
 					</button>`}
 					</section>
 					${isEditing
-						? `<textarea class="edited-comment">${comment.content}</textarea><button
+						? `
+						<div class="edit--wrapper">
+						<textarea class="edited-comment">${comment.content}</textarea><button
 						class="update"
 						type="submit"
 					>
 						UPDATE
-					</button>`
+					</button></div>`
 						: `	<p class="comment--content">${comment.content}</p>`}
 				</section>
 			</article>
