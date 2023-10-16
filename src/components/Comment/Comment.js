@@ -119,5 +119,13 @@ export default class Comment extends Component {
 			this.props.editComment(this.props.comment.id, editedCommentContent);
 			this.props.setEditingTarget(null);
 		});
+
+		this.addEvent('keydown', '.edited-comment', (event) => {
+			if (event.key === 'Enter' && !event.shiftKey) {
+				const editedCommentContent = this.$target.querySelector('.edited-comment').value;
+				this.props.editComment(this.props.comment.id, editedCommentContent);
+				this.props.setEditingTarget(null);
+			}
+		});
 	}
 }
