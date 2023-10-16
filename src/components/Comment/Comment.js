@@ -4,7 +4,7 @@ import './Comment.css';
 
 export default class Comment extends Component {
 	template() {
-		const { comment, isCurrentUser } = this.props;
+		const { comment, isCurrentUser, isEditing } = this.props;
 
 		return html`
 			<article class="comment">
@@ -92,7 +92,16 @@ export default class Comment extends Component {
 						Reply
 					</button>`}
 					</section>
-					<p class="comment--content">${comment.content}</p>
+					${isEditing
+						? `
+						<div class="edit--wrapper">
+						<textarea class="edited-comment">${comment.content}</textarea><button
+						class="update"
+						type="submit"
+					>
+						UPDATE
+					</button></div>`
+						: `	<p class="comment--content">${comment.content}</p>`}
 				</section>
 			</article>
 		`;
@@ -101,6 +110,24 @@ export default class Comment extends Component {
 	setEvent() {
 		this.addEvent('click', '.delete', () => {
 			this.props.showModal(this.props.comment.id);
+		});
+
+		this.addEvent('click', '.edit', () => {
+			this.props.setEditingTarget(this.props.comment.id);
+		});
+
+		this.addEvent('click', '.update', () => {
+			const editedCommentContent = this.$target.querySelector('.edited-comment').value;
+			this.props.editComment(this.props.comment.id, editedCommentContent);
+			this.props.setEditingTarget(null);
+		});
+
+		this.addEvent('keydown', '.edited-comment', (event) => {
+			if (event.key === 'Enter' && !event.shiftKey) {
+				const editedCommentContent = this.$target.querySelector('.edited-comment').value;
+				this.props.editComment(this.props.comment.id, editedCommentContent);
+				this.props.setEditingTarget(null);
+			}
 		});
 	}
 }
