@@ -18,7 +18,8 @@ export default class Comments extends Component {
 				isCurrentUser: comment.user.username === this.props.username,
 				showModal: this.props.showModal,
 				isEditing: comment.id === this.props.currentEditingCommentId,
-				startEditing: this.props.startEditing,
+				setEditingTarget: this.props.setEditingTarget,
+				editComment: this.props.editComment,
 			});
 
 			return $li;

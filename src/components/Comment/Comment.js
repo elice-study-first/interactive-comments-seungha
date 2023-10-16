@@ -93,7 +93,7 @@ export default class Comment extends Component {
 					</button>`}
 					</section>
 					${isEditing
-						? `<textarea>${comment.content}</textarea><button
+						? `<textarea class="edited-comment">${comment.content}</textarea><button
 						class="update"
 						type="submit"
 					>
@@ -104,14 +104,20 @@ export default class Comment extends Component {
 			</article>
 		`;
 	}
-	x;
+
 	setEvent() {
 		this.addEvent('click', '.delete', () => {
 			this.props.showModal(this.props.comment.id);
 		});
 
 		this.addEvent('click', '.edit', () => {
-			this.props.startEditing(this.props.comment.id);
+			this.props.setEditingTarget(this.props.comment.id);
+		});
+
+		this.addEvent('click', '.update', () => {
+			const editedCommentContent = this.$target.querySelector('.edited-comment').value;
+			this.props.editComment(this.props.comment.id, editedCommentContent);
+			this.props.setEditingTarget(null);
 		});
 	}
 }

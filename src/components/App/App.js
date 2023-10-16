@@ -35,7 +35,8 @@ export default class App extends Component {
 			username: this.state.currentUser.username,
 			showModal: this.showModal.bind(this),
 			currentEditingCommentId: this.state.currentEditingCommentId,
-			startEditing: this.startEditing.bind(this),
+			setEditingTarget: this.setEditingTarget.bind(this),
+			editComment: this.editComment.bind(this),
 		});
 		new CommentForm($commentsFormWrapper, {
 			currentUser: this.state.currentUser,
@@ -84,7 +85,20 @@ export default class App extends Component {
 		this.closeModal();
 	}
 
-	startEditing(id) {
+	setEditingTarget(id) {
 		this.setState({ currentEditingCommentId: id });
+	}
+
+	editComment(id, content) {
+		this.setState({
+			comments: this.state.comments.map((comment) =>
+				comment.id === id
+					? {
+							...comment,
+							content,
+					  }
+					: comment
+			),
+		});
 	}
 }
